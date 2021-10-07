@@ -10,7 +10,8 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region  = var.aws_region
+  profile = var.aws_profile
 }
 
 resource "aws_s3_bucket" "terraform-bucket" {
@@ -24,4 +25,11 @@ resource "aws_s3_bucket" "terraform-bucket" {
     Owner       = "Tobias Andre Eggers"
     UpdatedAt   = "2021-10-07"
   }
+}
+
+resource "aws_instance" "web" {
+  ami           = var.instance_ami
+  instance_type = var.instance_type
+
+  tags = var.instance_tags
 }
