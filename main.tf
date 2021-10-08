@@ -6,25 +6,17 @@ terraform {
       source  = "hashicorp/aws"
       version = "3.61.0"
     }
+
+    random = {
+      source  = "hashicorp/random"
+      version = "3.1.0"
+    }
   }
 }
 
 provider "aws" {
   region  = var.aws_region
   profile = var.aws_profile
-}
-
-resource "aws_s3_bucket" "terraform-bucket" {
-  bucket = "terraform-bucket-07102021"
-  acl    = "private"
-
-  tags = {
-    Name        = "Terraform bucket"
-    Environment = "Prod"
-    ManagedBy   = "Terraform"
-    Owner       = "Tobias Andre Eggers"
-    UpdatedAt   = "2021-10-07"
-  }
 }
 
 resource "aws_instance" "web" {

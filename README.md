@@ -27,11 +27,19 @@ OBS: O Comando ```terraform init``` deve ser executado ao se executar este proje
 a cada recurso novo adicionado, para que as dependências sejam baixadas.
 
 Preview de infra para dev:
+
 ```
 terraform plan
 ```
 
 Preview de infra para prod:
+
 ```
 terraform plan -var-file="prod.tfvars"
+```
+
+Criar a infraestrutura na AWS (para dev, basta não passar o var file como parâmetro):
+
+```
+terraform apply -var-file="prod.tfvars" -auto-approve
 ```
