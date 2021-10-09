@@ -13,3 +13,7 @@ resource "aws_s3_bucket_object" "this" {
   source = local.ip_filepath
   etag   = filemd5(local.ip_filepath)
 }
+
+resource "aws_s3_bucket" "tfstate" {
+  bucket = "tfstate-951845434705"
+}
